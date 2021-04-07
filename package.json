@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index.js"
+    "start": "nodemon ./api/index.js"
   },
   "repository": {
     "type": "git",
@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/CarlosZoft/AD_API_Agendamentos#readme",
   "dependencies": {
+    "config": "^3.3.6",
     "express": "^4.17.1",
     "mysql2": "^2.2.5",
     "sequelize": "^6.6.2"
