@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-const connection = require('../db');
+const connection = require('../../db');
 
 const columns = {
     nome_cliente: {

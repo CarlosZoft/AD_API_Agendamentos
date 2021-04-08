@@ -6,6 +6,10 @@ module.exports = {
         return await modelAgendamento.findAll({
             raw:true,
         });
+    },
+
+    async adicionar(agendamento){
+        return await modelAgendamento.create(agendamento);
     }
 
 }
