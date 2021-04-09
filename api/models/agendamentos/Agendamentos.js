@@ -35,5 +35,19 @@ class Agendamento {
     async excluir() {
         await tabela_agendamento.remover(this.id);
     }
+    async atualizar() {
+        const result = await tabela_agendamento.buscarPorID(this.id)
+            .then(
+            await tabela_agendamento.editar({
+                    nome_cliente : this.nome_cliente,
+                    nome_servico : this.nome_servico,
+                    status : this.status, 
+                    data_agendamento : this.data_agendamento
+                }, this.id)
+            )
+            .catch(error => 
+                console.error(error)
+            )
+    }
 }
 module.exports = Agendamento;
