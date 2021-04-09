@@ -22,6 +22,10 @@ module.exports = {
                 id : id
             }
         })
+    },
+    async editar(agendamento, id) {
+        return await modelAgendamento.update(agendamento, {where: {id: id}});
     }
-
+  
+    
 }
