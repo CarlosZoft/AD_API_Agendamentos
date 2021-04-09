@@ -25,8 +25,20 @@ router.get('/:id', async (req,res)=>{
         }))
     }
 })
-router.put('/', (req , res) =>{
-    
+router.put('/:id', async(req , res) => {
+    const id = req.params.id;
+    const Att = req.body;
+    Att.id = id;
+    console.log(Att);
+    const agendamento = new Agendamento(Att);
+
+    try {
+        await agendamento.atualizar();
+        res.status(200).send("Atualizado com sucesso xD")
+    }
+    catch(error){
+        res.status(404).send("Não atualizado :*(")
+    }
 })
 router.delete('/:id', async(req,res) => {
     try{
@@ -39,9 +51,6 @@ router.delete('/:id', async(req,res) => {
         res.send(JSON.stringify({
             mensage: error.mensage
         }))
-    }
-
-
-    
+    }  
 })
 module.exports = router;
