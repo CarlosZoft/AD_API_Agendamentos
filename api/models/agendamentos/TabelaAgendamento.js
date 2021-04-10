@@ -3,29 +3,54 @@ const modelAgendamento = require('./Agendamento');
 module.exports = {
 
     async listar() {
-        return await modelAgendamento.findAll({
-            raw:true,
-        });
+        try{
+            return await modelAgendamento.findAll({
+                raw:true,
+            });
+        }
+        catch(error){
+            throw error;
+        }
     },
 
     async adicionar(agendamento){
-        return await modelAgendamento.create(agendamento);
+        try{
+            return await modelAgendamento.create(agendamento);
+        }
+        catch(error){
+            throw error;
+        }
+        
     },
 
     async buscarPorID(id) {
-        return await modelAgendamento.findByPk(id)
+        try{
+            return await modelAgendamento.findByPk(id)
+        }
+        catch(error){
+            throw error;
+        }
     },
 
     async remover(id){
-        return await modelAgendamento.destroy({
-            where: {
-                id : id
-            }
-        })
+        try {
+            return await modelAgendamento.destroy({
+                where: {
+                    id : id
+                }
+            })
+        }
+        catch(error){
+            throw error;
+        }
     },
     async editar(agendamento, id) {
-        return await modelAgendamento.update(agendamento, {where: {id: id}});
+        try{
+            return await modelAgendamento.update(agendamento, {where: {id: id}});
+        }
+        catch(error){
+            throw error;
+        }
     }
-  
     
 }
