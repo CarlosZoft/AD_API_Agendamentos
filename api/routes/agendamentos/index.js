@@ -10,8 +10,8 @@ router.get('/', async (req , res) => {
             res.getHeader('Content-Type'),
             ['nome_servico']
         );
-        agendamentos = serializador.transformar(results);
-        res.status(200).send(agendamentos);
+        const agendamentosFiltrados = serializador.transformar(results);
+        res.status(200).send(agendamentosFiltrados);
     }
     catch(error){
         res.send(error);
@@ -25,9 +25,14 @@ router.post('/', async (req , res) => {
         const reqAgendamento = req.body;
         const agendamento = new Agendamento(reqAgendamento);
         await agendamento.criar();
-        res.send(JSON.stringify(agendamento))
+        const serializador = new SerializadorAgendamento(
+            res.getHeader('Content-Type'),
+            ['nome_servico']
+        );
+        const agendamentoFiltrado = serializador.transformar(agendamento);
+        res.status(200).send(agendamentoFiltrado);
 
-  } catch (error){
+  }catch (error){
     
         res.send(error);
   
@@ -40,10 +45,15 @@ router.get('/:id', async (req,res)=>{
         const id = req.params.id;
         const agendamento = new Agendamento({id:id});
         await agendamento.buscar();
-        res.send(JSON.stringify(agendamento));
+        const serializador = new SerializadorAgendamento(
+            res.getHeader('Content-Type'),
+            ['nome_servico']
+        );
+        const agendamentoFiltrado = serializador.transformar(agendamento)
+        res.status(200).send(agendamentoFiltrado);
 
     }catch(error){
-        res.send(JSON.stringify({
+        res.status(404).send(JSON.stringify({
             mensage: error.mensage
         }))
     }
@@ -58,8 +68,7 @@ router.put('/:id', async(req , res) => {
         const agendamento = new Agendamento(Att);
         await agendamento.atualizar();
         res.status(200).send("Atualizado com sucesso xD")
-    }
-    catch(error){
+    }catch(error){
         res.status(404).send("Não atualizado :*(")
     }
 })
@@ -70,9 +79,8 @@ router.delete('/:id', async(req,res) => {
         const agendamento = new Agendamento({id:id});
         await agendamento.excluir();
         res.status(204).send(JSON.stringify(`Usuário de id : ${id} removido com sucesso!`));
-    }
-    catch(error){
-        res.send(JSON.stringify({
+    }catch(error){
+        res.status(404).send(JSON.stringify({
             mensage: error.mensage
         }))
     }  
