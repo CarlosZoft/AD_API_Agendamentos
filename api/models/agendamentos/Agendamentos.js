@@ -36,7 +36,7 @@ class Agendamento {
         await tabela_agendamento.remover(this.id);
     }
     async atualizar() {
-        const result = await tabela_agendamento.buscarPorID(this.id)
+        await tabela_agendamento.buscarPorID(this.id)
             .then(
             await tabela_agendamento.editar({
                     nome_cliente : this.nome_cliente,
