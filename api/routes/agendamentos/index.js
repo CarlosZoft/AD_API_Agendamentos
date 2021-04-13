@@ -19,7 +19,7 @@ router.get('/', async (req , res) => {
     
 })
 
-router.post('/', async (req , res) => {
+router.post('/', async (req , res, next) => {
   try {
     
         const reqAgendamento = req.body;
@@ -34,7 +34,7 @@ router.post('/', async (req , res) => {
 
   }catch (error){
     
-        res.send(error);
+        next(error);
   
     }
 })
@@ -59,7 +59,7 @@ router.get('/:id', async (req,res)=>{
     }
 })
 
-router.put('/:id', async(req , res) => {
+router.put('/:id', async(req , res, next) => {
     try {    
         const id = req.params.id;
         const Att = req.body;
@@ -69,7 +69,7 @@ router.put('/:id', async(req , res) => {
         await agendamento.atualizar();
         res.status(200).send("Atualizado com sucesso xD")
     }catch(error){
-        res.status(404).send("Não atualizado :*(")
+        next(error);
     }
 })
 
@@ -81,7 +81,7 @@ router.delete('/:id', async(req,res) => {
         res.status(204).send(JSON.stringify(`Usuário de id : ${id} removido com sucesso!`));
     }catch(error){
         res.status(404).send(JSON.stringify({
-            mensage: error.mensage
+            mensagem: error.message
         }))
     }  
 })
