@@ -1,5 +1,7 @@
 const express = require('express');
-const router = require('../routes/agendamentos');
+const routesAgendamentos = require('../routes/agendamentos');
+const routesUsuario = require('../routes/usuarios');
+const routesLogin = require('../routes/login');
 const FormatoInvalido = require('../errors/FormatoInvalido');
 const FormatosValidos = require('../Serializar').FormatosValidos;
 const NaoEncontrado = require('../errors/NaoEncontrado');
@@ -24,8 +26,12 @@ module.exports = () => {
         res.setHeader('Content-Type', formatoSolicitado);
         next();
     })
+    
     app.use(express.json());
-    app.use('/api/agendamentos', router);
+    app.use('/api/agendamentos', routesAgendamentos);
+    app.use('/api/usuarios', routesUsuario);
+    app.use('/api/login', routesLogin);
+
     app.use((error, req, res, next) => {
         let status = 500;
         if(error instanceof CampoInvalido || error instanceof DadosNaoInformados){
