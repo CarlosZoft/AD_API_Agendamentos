@@ -39,7 +39,7 @@ router.post('/', async (req , res, next) => {
     }
 })
 
-router.get('/:id', async (req,res)=>{
+router.get('/:id', async (req,res, next)=>{
     try {
         
         const id = req.params.id;
@@ -53,9 +53,7 @@ router.get('/:id', async (req,res)=>{
         res.status(200).send(agendamentoFiltrado);
 
     }catch(error){
-        res.status(404).send(JSON.stringify({
-            mensage: error.mensage
-        }))
+        next(error);
     }
 })
 
