@@ -21,6 +21,7 @@
   "dependencies": {
     "config": "^3.3.6",
     "express": "^4.17.1",
+    "jsontoxml": "^1.0.1",
     "mysql2": "^2.2.5",
     "sequelize": "^6.6.2"
   },
