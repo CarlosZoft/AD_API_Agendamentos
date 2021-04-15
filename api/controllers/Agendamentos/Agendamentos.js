@@ -46,7 +46,7 @@ class Agendamento {
         await tabela_agendamento.remover(this.id);
     }
 
-    async atualizar(){
+    async atualizar() {
 
         const dadosAtualizar = {}
         await tabela_agendamento.buscarPorID(this.id)
@@ -60,9 +60,10 @@ class Agendamento {
                 if(Object.keys(dadosAtualizar).length === 0){
                     throw new DadosNaoInformados();
                 };
+            
                 await tabela_agendamento.editar(dadosAtualizar, this.id);
             })
-            .catch(error =>{
+            .catch(error => {
                 throw error;
             })
                
