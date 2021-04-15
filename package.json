@@ -20,6 +20,7 @@
   "homepage": "https://github.com/CarlosZoft/AD_API_Agendamentos#readme",
   "dependencies": {
     "config": "^3.3.6",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "jsontoxml": "^1.0.1",
     "mysql2": "^2.2.5",
