@@ -1,10 +1,10 @@
-const config = require('config');
+require('dotenv').config({path:"../env"})
 const configExpress = require('./config/configExpress');
 app = configExpress()
 
 app.get("/", (req,res) => {
     res.send("Funcionou");
 })
-app.listen(config.get('api.port'), () => {
+app.listen(process.env.API_PORT, () => {
     console.log("App Running")
 })
