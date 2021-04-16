@@ -10,6 +10,7 @@ const CampoQtdMinima = require('../errors/CampoQtdMinima');
 const CampoQtdMaxima = require('../errors/CampoQtdMaxima');
 const DadosNaoInformados = require('../errors/DadosNaoInformados');
 const SerializarErro = require('../Serializar').SerializarErro
+const passport = require("../controllers/usuarios/auth");
 
 module.exports = () => {
     const app = express();
