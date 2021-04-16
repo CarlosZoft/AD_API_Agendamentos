@@ -19,11 +19,16 @@
   },
   "homepage": "https://github.com/CarlosZoft/AD_API_Agendamentos#readme",
   "dependencies": {
+    "bcrypt": "^5.0.1",
     "config": "^3.3.6",
+    "crypto": "^1.0.1",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "jsontoxml": "^1.0.1",
+    "jsonwebtoken": "^8.5.1",
     "mysql2": "^2.2.5",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
     "sequelize": "^6.6.2"
   },
   "devDependencies": {
