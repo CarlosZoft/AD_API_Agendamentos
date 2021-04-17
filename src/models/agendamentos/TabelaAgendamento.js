@@ -1,4 +1,4 @@
-const modelAgendamento = require('../../models/agendamentos/Agendamento');
+const modelAgendamento = require('./Agendamento');
 
 module.exports = {
 
@@ -44,6 +44,7 @@ module.exports = {
             throw error;
         }
     },
+    
     async editar(agendamento, id) {
         try{
             return await modelAgendamento.update(agendamento, {where: {id: id}});

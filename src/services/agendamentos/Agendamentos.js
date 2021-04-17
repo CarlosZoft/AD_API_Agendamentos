@@ -1,4 +1,4 @@
-const tabela_agendamento = require('./TabelaAgendamento');
+const tabela_agendamento = require('../../models/agendamentos/TabelaAgendamento');
 const CampoInvalido = require('../../errors/CampoInvalido');
 const DadosNaoInformados = require('../../errors/DadosNaoInformados');
 const NaoEncontrado = require('../../errors/NaoEncontrado');

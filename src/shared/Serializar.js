@@ -1,4 +1,4 @@
-const FormatoInvalido = require('./errors/FormatoInvalido')
+const FormatoInvalido = require('../errors/FormatoInvalido')
 const jsontoxml = require('jsontoxml');
 class Serializar {
     json(dados) {
@@ -72,9 +72,9 @@ class SerializarErro extends Serializar {
     constructor(contentType,camposPersonalizados){
         super();
         this.contentType = contentType;
-        this.camposPermitidos = ['id', "mensagem"].concat(camposPersonalizados || []);
-        this.tag = 'Error'
-        this.tagList = 'Erros'
+        this.camposPermitidos = ['id', 'mensagem'].concat(camposPersonalizados || []);
+        this.tag = 'Error';
+        this.tagList = 'Erros';
     }
 }
 class SerializarUsuario extends Serializar {

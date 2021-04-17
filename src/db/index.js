@@ -1,7 +1,7 @@
-require('dotenv').config({path:"../../env"})
+require('dotenv').config()
 const Sequelize = require('sequelize');
 
-console.log(process.env.mysql_password, "AQUI",process.env.mysql_database );
+//console.log(process.env.mysql_password, "AQUI",process.env.mysql_database );
 const connection = new Sequelize(
     process.env.MYSQL_DATABASE,
     process.env.MYSQL_USER,

@@ -1,5 +1,4 @@
-const {listar}  = require('../Agendamentos/TabelaAgendamento')
-const modeloUsuario = require('../../models/usuarios/modelTabelaUsuario');
+const modeloUsuario = require('./modelTabelaUsuario');
 
 
 module.exports = {
